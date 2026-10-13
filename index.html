@@ -1,4 +1,4 @@
-<!doctype html>
+9<!doctype html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -372,65 +372,6 @@
 			line-height: 1.6;
 		}
 
-		.pricing-section {
-			border-top: 1px solid var(--line);
-			padding-block: clamp(64px, 9vw, 104px) clamp(76px, 10vw, 120px);
-		}
-
-		.pricing-heading {
-			margin-bottom: 36px;
-			text-align: center;
-		}
-
-		.pricing-heading h2 {
-			margin: 0 0 12px;
-			font-size: clamp(2rem, 4vw, 3.25rem);
-			font-weight: 500;
-			letter-spacing: -0.06em;
-		}
-
-		.pricing-heading p {
-			margin: 0;
-			color: var(--muted);
-			font-size: 0.92rem;
-		}
-
-		.price-list {
-			max-width: 900px;
-			margin-inline: auto;
-			border-top: 1px solid var(--line);
-		}
-
-		.price-row {
-			display: grid;
-			grid-template-columns: minmax(0, 1fr) auto;
-			align-items: center;
-			gap: 24px;
-			padding-block: 23px;
-			border-bottom: 1px solid var(--line);
-		}
-
-		.price-row h3 {
-			margin: 0 0 6px;
-			font-size: 1.2rem;
-			font-weight: 500;
-			letter-spacing: -0.035em;
-		}
-
-		.price-row p {
-			margin: 0;
-			color: var(--muted);
-			font-size: 0.92rem;
-			line-height: 1.55;
-		}
-
-		.price-range {
-			color: var(--ink);
-			font-size: 0.88rem;
-			font-weight: 600;
-			white-space: nowrap;
-		}
-
 		.contact {
 			padding-block: clamp(64px, 10vw, 112px);
 			background: #000;
@@ -543,6 +484,14 @@
 				margin-bottom: -6px;
 			}
 
+			.project-meta {
+				flex-wrap: wrap;
+			}
+
+			.project-meta span:last-child {
+				white-space: nowrap;
+			}
+
 			.hero-actions {
 				flex-wrap: wrap;
 			}
@@ -560,10 +509,6 @@
 				margin-bottom: 30px;
 			}
 
-			.price-row {
-				gap: 14px;
-			}
-
 			.project-grid {
 				grid-template-columns: 1fr;
 			}
@@ -579,7 +524,7 @@
 		<a class="wordmark" href="#top">FLOWSITE</a>
 		<nav class="site-nav" aria-label="Main navigation">
 			<a href="#work">Work</a>
-			<a href="#pricing">Pricing</a>
+			<a href="about.html">About</a>
 			<a class="button button-outline" href="#contact">Enquire</a>
 		</nav>
 	</header>
@@ -653,35 +598,6 @@
 			</div>
 		</section>
 
-		<section id="pricing" class="pricing-section" aria-labelledby="pricing-title">
-			<div class="pricing-heading">
-				<h2 id="pricing-title">Pricing</h2>
-				<p>Indicative project ranges; final quotes depend on scope.</p>
-			</div>
-			<div class="price-list">
-				<div class="price-row">
-					<div>
-						<h3>Sites</h3>
-						<p>Custom websites designed to present your work and bring in enquiries. Pricing depends on page count and site complexity.</p>
-					</div>
-					<span class="price-range">R500</span>
-				</div>
-				<div class="price-row">
-					<div>
-						<h3>Systems</h3>
-						<p>Workflow improvements and automations tailored to your day-to-day.</p>
-					</div>
-					<span class="price-range">R1000</span>
-				</div>
-				<div class="price-row">
-					<div>
-						<h3>Sites + Systems</h3>
-						<p>A complete web presence paired with practical business automation.</p>
-					</div>
-					<span class="price-range">R3500</span>
-				</div>
-			</div>
-		</section>
 	</main>
 
 	<section id="contact" class="contact" aria-labelledby="contact-title">
