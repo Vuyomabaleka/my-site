@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#EFEBE4">
+	<title>About — Flowsite</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			color-scheme: light;
+			--bone: #EFEBE4;
+			--ink: #17150F;
+			--muted: #55523F;
+			--line: #D4CCBB;
+			--clay: #B08A6A;
+			--page-width: 1120px;
+		}
+
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			margin: 0;
+			background: var(--bone);
+			color: var(--ink);
+			font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		a {
+			color: inherit;
+		}
+
+		.page-shell {
+			width: min(calc(100% - 64px), var(--page-width));
+			margin-inline: auto;
+		}
+
+		.site-header {
+			min-height: 82px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.wordmark {
+			color: var(--ink);
+			font-size: 0.7rem;
+			font-weight: 600;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+			text-decoration: none;
+		}
+
+		.site-nav {
+			display: flex;
+			gap: 28px;
+			color: var(--muted);
+			font-size: 0.68rem;
+			font-weight: 600;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+		}
+
+		.site-nav a {
+			text-decoration: none;
+		}
+
+		.site-nav a:hover,
+		.site-nav a:focus-visible {
+			color: var(--ink);
+		}
+
+		main {
+			padding-block: clamp(76px, 10vw, 120px) clamp(88px, 12vw, 144px);
+		}
+
+		h1,
+		h2,
+		p {
+			margin-top: 0;
+		}
+
+		.section-kicker {
+			margin-bottom: 22px;
+			color: var(--muted);
+			font-size: 0.68rem;
+			font-weight: 600;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+		}
+
+		.about-heading {
+			max-width: 760px;
+			margin-bottom: clamp(48px, 7vw, 76px);
+		}
+
+		.about-heading h1 {
+			margin: 0 0 22px;
+			font-size: clamp(3.5rem, 8vw, 6.75rem);
+			font-weight: 500;
+			letter-spacing: -0.075em;
+			line-height: 0.98;
+		}
+
+		.about-intro {
+			max-width: 640px;
+			margin: 0;
+			color: var(--muted);
+			font-size: clamp(1rem, 1.7vw, 1.15rem);
+			line-height: 1.75;
+		}
+
+		.about-steps {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: clamp(24px, 4vw, 52px);
+		}
+
+		.about-step {
+			padding-top: 18px;
+			border-top: 1px solid var(--line);
+		}
+
+		.about-step-number {
+			margin: 0 0 26px;
+			color: var(--clay);
+			font-size: 0.82rem;
+			font-weight: 600;
+			letter-spacing: 0.08em;
+		}
+
+		.about-step h2 {
+			margin: 0 0 10px;
+			font-size: 1.22rem;
+			font-weight: 600;
+			letter-spacing: -0.035em;
+		}
+
+		.about-step p:last-child {
+			max-width: 340px;
+			margin: 0;
+			color: var(--muted);
+			font-size: 0.95rem;
+			line-height: 1.65;
+		}
+
+		.contact {
+			padding-block: clamp(64px, 10vw, 112px);
+			background: #000;
+			color: var(--bone);
+		}
+
+		.contact-inner {
+			display: grid;
+			justify-items: center;
+			gap: 26px;
+			text-align: center;
+		}
+
+		.contact .section-kicker {
+			margin-bottom: 18px;
+			color: var(--clay);
+		}
+
+		.contact h2 {
+			max-width: 850px;
+			margin: 0 auto 18px;
+			font-size: clamp(2.75rem, 6vw, 5.5rem);
+			font-weight: 500;
+			letter-spacing: -0.07em;
+			line-height: 1;
+		}
+
+		.contact-copy {
+			max-width: 540px;
+			margin: 0 auto;
+			color: var(--bone);
+			font-size: 1rem;
+			line-height: 1.7;
+			opacity: 0.78;
+		}
+
+		.contact-link {
+			min-height: 46px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0 22px;
+			border: 1px solid var(--bone);
+			background: var(--bone);
+			color: #000;
+			font-size: 0.68rem;
+			font-weight: 600;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+			text-decoration: none;
+		}
+
+		.site-footer {
+			padding-block: 22px;
+			background: var(--bone);
+			color: var(--muted);
+			font-size: 0.68rem;
+		}
+
+		.site-footer p {
+			margin: 0;
+			letter-spacing: 0.16em;
+			text-align: center;
+			text-transform: uppercase;
+		}
+
+		@media (max-width: 640px) {
+			.page-shell {
+				width: min(calc(100% - 40px), var(--page-width));
+			}
+
+			.site-header {
+				min-height: 70px;
+			}
+
+			.site-nav {
+				gap: 16px;
+				font-size: 0.62rem;
+				letter-spacing: 0.1em;
+			}
+
+			.about-steps {
+				grid-template-columns: 1fr;
+				gap: 34px;
+			}
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			html {
+				scroll-behavior: auto;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header class="site-header page-shell">
+		<a class="wordmark" href="index.html#top">FLOWSITE</a>
+		<nav class="site-nav" aria-label="Main navigation">
+			<a href="index.html#work">Work</a>
+			<a href="about.html" aria-current="page">About</a>
+			<a href="#contact">Enquire</a>
+		</nav>
+	</header>
+
+	<main class="page-shell" aria-labelledby="about-title">
+		<section class="about-heading">
+			<p class="section-kicker">About</p>
+			<h1 id="about-title">Hi Im Vuyo.</h1>
+			<p class="about-intro">I’m Vuyo, a web and systems builder helping small businesses show up clearly online and spend less time on repetitive work.</p>
+		</section>
+		<section class="about-steps" aria-label="How I work">
+			<article class="about-step">
+				<p class="about-step-number">01</p>
+				<h2>Start with what matters</h2>
+				<p>We get clear on your goals, your customers, and what needs to work better.</p>
+			</article>
+			<article class="about-step">
+				<p class="about-step-number">02</p>
+				<h2>Build with care</h2>
+				<p>I shape a thoughtful website or system around the way your business works.</p>
+			</article>
+			<article class="about-step">
+				<p class="about-step-number">03</p>
+				<h2>Make the next move simpler</h2>
+				<p>Your online presence and everyday processes become clearer and easier to manage.</p>
+			</article>
+		</section>
+	</main>
+
+	<section id="contact" class="contact" aria-labelledby="contact-title">
+		<div class="contact-inner page-shell">
+			<div>
+				<p class="section-kicker">Get in touch</p>
+				<h2 id="contact-title">Let’s make your next move simpler.</h2>
+				<p class="contact-copy">Tell me what you’re looking to build. I’ll get back to you to talk through the right approach.</p>
+			</div>
+			<a class="contact-link" href="mailto:vuyomabaleka07@gmail.com">Email me ↗</a>
+		</div>
+	</section>
+
+	<footer class="site-footer">
+		<div class="page-shell">
+			<p>Flowsite</p>
+		</div>
+	</footer>
+</body>
+</html>
