@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#EFEBE4">
+	<title>Studio — Digital experiences</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			color-scheme: light;
+			--bone: #EFEBE4;
+			--raised: #E6E0D6;
+			--ink: #17150F;
+			--muted: #55523F;
+			--line: #D4CCBB;
+			--clay: #B08A6A;
+			--page-width: 1120px;
+		}
+
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			margin: 0;
+			background: var(--bone);
+			color: var(--ink);
+			font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		a {
+			color: inherit;
+		}
+
+		.page-shell {
+			width: min(calc(100% - 64px), var(--page-width));
+			margin-inline: auto;
+		}
+
+		.site-header {
+			min-height: 82px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.wordmark {
+			color: var(--ink);
+			font-size: 0.7rem;
+			font-weight: 600;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+			text-decoration: none;
+		}
+
+		.site-nav {
+			display: flex;
+			gap: 28px;
+			color: var(--muted);
+			font-size: 0.68rem;
+			font-weight: 600;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+		}
+
+		.site-nav a {
+			text-decoration: none;
+		}
+
+		.site-nav .button {
+			margin-top: -10px;
+			margin-bottom: -10px;
+		}
+
+		.site-nav a:hover,
+		.site-nav a:focus-visible {
+			color: var(--ink);
+		}
+
+		main {
+			padding-block: clamp(76px, 12vw, 148px) 112px;
+		}
+
+		.hero {
+			max-width: 900px;
+			margin-inline: auto;
+			padding-bottom: clamp(72px, 11vw, 132px);
+			text-align: center;
+		}
+
+		.app-label {
+			display: inline-block;
+			margin: 0 0 24px;
+			color: var(--clay);
+			font-size: 0.72rem;
+			font-weight: 600;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+			animation: label-fade 1.2s ease both;
+		}
+
+		h1,
+		h2,
+		p {
+			margin-top: 0;
+		}
+
+		h1 {
+			max-width: 860px;
+			margin-inline: auto;
+			margin-bottom: 24px;
+			font-size: clamp(3.25rem, 8vw, 7rem);
+			font-weight: 500;
+			letter-spacing: -0.075em;
+			line-height: 0.98;
+		}
+
+		.hero-copy {
+			max-width: 560px;
+			margin: 0 auto 30px;
+			color: var(--muted);
+			font-size: clamp(1.05rem, 2vw, 1.25rem);
+			line-height: 1.7;
+		}
+
+		.hero-actions {
+			display: flex;
+			justify-content: center;
+			gap: 12px;
+		}
+
+		.services-section {
+			border-top: 1px solid var(--line);
+			padding-block: clamp(64px, 9vw, 104px) clamp(76px, 10vw, 120px);
+		}
+
+		.services-title {
+			margin-bottom: 36px;
+			font-size: clamp(2rem, 4vw, 3.25rem);
+			font-weight: 500;
+			letter-spacing: -0.06em;
+			text-align: center;
+		}
+
+		.services-grid {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			border: 1px solid var(--line);
+		}
+
+		.service-card {
+			min-height: 250px;
+			padding: clamp(26px, 4vw, 46px);
+			background: var(--raised);
+		}
+
+		.service-card + .service-card {
+			border-left: 1px solid var(--line);
+		}
+
+		.service-index {
+			margin-bottom: 46px;
+			color: var(--muted);
+			font-size: 0.68rem;
+			font-weight: 600;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+		}
+
+		.service-card h3 {
+			margin-bottom: 10px;
+			font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+			font-weight: 500;
+			letter-spacing: -0.045em;
+		}
+
+		.service-card p {
+			max-width: 390px;
+			margin-bottom: 0;
+			color: var(--muted);
+			line-height: 1.65;
+		}
+
+		.button {
+			min-height: 46px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0 20px;
+			border: 1px solid var(--ink);
+			border-radius: 0;
+			font-size: 0.68rem;
+			font-weight: 600;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+			text-decoration: none;
+			transition: background-color 160ms ease, color 160ms ease;
+		}
+
+		.button-outline {
+			background: transparent;
+			color: var(--ink);
+		}
+
+		.button-outline:hover,
+		.button-outline:focus-visible {
+			background: transparent;
+			color: var(--ink);
+			opacity: 0.68;
+		}
+
+		.button-solid {
+			background: #000;
+			border-color: #000;
+			color: var(--bone);
+		}
+
+		.button-solid:hover,
+		.button-solid:focus-visible {
+			background: #000;
+			color: var(--bone);
+			opacity: 0.72;
+		}
+
+		.work-section {
+			border-top: 1px solid var(--line);
+			padding-block: clamp(64px, 9vw, 104px) clamp(76px, 10vw, 120px);
+		}
+
+		.work-heading {
+			margin-bottom: 36px;
+			text-align: center;
+		}
+
+		.section-kicker {
+			margin-bottom: 22px;
+			color: var(--muted);
+			font-size: 0.68rem;
+			font-weight: 600;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+		}
+
+		.work-heading .section-kicker {
+			margin-bottom: 12px;
+		}
+
+		.work-heading h2 {
+			margin: 0;
+			font-size: clamp(2rem, 4vw, 3.25rem);
+			font-weight: 500;
+			letter-spacing: -0.06em;
+		}
+
+		.project-grid {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 16px;
+		}
+
+		.project-card {
+			display: block;
+			background: var(--raised);
+			border: 1px solid var(--line);
+			border-radius: 0;
+			color: inherit;
+			text-decoration: none;
+			transition: border-color 160ms ease, transform 160ms ease;
+		}
+
+		.project-card:hover,
+		.project-card:focus-visible {
+			border-color: var(--muted);
+			transform: translateY(-3px);
+		}
+
+		.project-preview {
+			min-height: 250px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			padding: clamp(24px, 4vw, 38px);
+			overflow: hidden;
+		}
+
+		.project-preview small {
+			font-size: 0.62rem;
+			font-weight: 600;
+			letter-spacing: 0.18em;
+			text-transform: uppercase;
+		}
+
+		.project-preview strong {
+			font-size: clamp(2rem, 5vw, 4rem);
+			font-weight: 600;
+			letter-spacing: -0.08em;
+			line-height: 0.9;
+		}
+
+		.project-preview--fade {
+			background: #1c1a17;
+			color: #f2ece0;
+		}
+
+		.project-preview--fade strong span {
+			color: #a13d2b;
+		}
+
+		.project-preview--cleaning {
+			background: #1a3a52;
+			color: #fff;
+		}
+
+		.project-preview--cleaning strong span {
+			color: #65ce91;
+		}
+
+		.project-preview--ilifa {
+			background: #d7d0c3;
+			color: #243a32;
+		}
+
+		.project-preview--ilifa strong {
+			font-family: Georgia, serif;
+			font-weight: 400;
+			letter-spacing: 0.08em;
+		}
+
+		.project-copy {
+			padding: 24px 26px 28px;
+		}
+
+		.project-meta {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 16px;
+			margin-bottom: 12px;
+			color: var(--muted);
+			font-size: 0.65rem;
+			font-weight: 600;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+		}
+
+		.project-meta span:last-child {
+			color: var(--clay);
+		}
+
+		.project-copy h3 {
+			margin: 0 0 8px;
+			font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+			font-weight: 500;
+			letter-spacing: -0.045em;
+		}
+
+		.project-copy p {
+			max-width: 470px;
+			margin: 0;
+			color: var(--muted);
+			line-height: 1.6;
+		}
+
+		.pricing-section {
+			border-top: 1px solid var(--line);
+			padding-block: clamp(64px, 9vw, 104px) clamp(76px, 10vw, 120px);
+		}
+
+		.pricing-heading {
+			margin-bottom: 36px;
+			text-align: center;
+		}
+
+		.pricing-heading h2 {
+			margin: 0 0 12px;
+			font-size: clamp(2rem, 4vw, 3.25rem);
+			font-weight: 500;
+			letter-spacing: -0.06em;
+		}
+
+		.pricing-heading p {
+			margin: 0;
+			color: var(--muted);
+			font-size: 0.92rem;
+		}
+
+		.price-list {
+			max-width: 900px;
+			margin-inline: auto;
+			border-top: 1px solid var(--line);
+		}
+
+		.price-row {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) auto;
+			align-items: center;
+			gap: 24px;
+			padding-block: 23px;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.price-row h3 {
+			margin: 0 0 6px;
+			font-size: 1.2rem;
+			font-weight: 500;
+			letter-spacing: -0.035em;
+		}
+
+		.price-row p {
+			margin: 0;
+			color: var(--muted);
+			font-size: 0.92rem;
+			line-height: 1.55;
+		}
+
+		.price-range {
+			color: var(--ink);
+			font-size: 0.88rem;
+			font-weight: 600;
+			white-space: nowrap;
+		}
+
+		.contact {
+			padding-block: clamp(64px, 10vw, 112px);
+			background: #000;
+			color: var(--bone);
+		}
+
+		.contact-inner {
+			display: grid;
+			justify-items: center;
+			gap: 26px;
+			text-align: center;
+		}
+
+		.contact .section-kicker {
+			margin-bottom: 18px;
+			color: var(--clay);
+		}
+
+		.contact h2 {
+			max-width: 850px;
+			margin: 0 auto 18px;
+			font-size: clamp(2.75rem, 6vw, 5.5rem);
+			font-weight: 500;
+			letter-spacing: -0.07em;
+			line-height: 1;
+		}
+
+		.contact-copy {
+			max-width: 540px;
+			margin: 0 auto;
+			color: var(--bone);
+			font-size: 1rem;
+			line-height: 1.7;
+			opacity: 0.78;
+		}
+
+		.contact-link {
+			min-height: 46px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0 22px;
+			border: 1px solid var(--bone);
+			border-radius: 0;
+			background: var(--bone);
+			color: #000;
+			font-size: 0.68rem;
+			font-weight: 600;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+			text-decoration: none;
+			transition: background-color 160ms ease, color 160ms ease;
+		}
+
+		.contact-link:hover,
+		.contact-link:focus-visible {
+			background: var(--bone);
+			color: #000;
+			opacity: 0.78;
+		}
+
+		.site-footer {
+			padding-block: 22px;
+			background: var(--bone);
+			color: var(--muted);
+			font-size: 0.68rem;
+		}
+
+		.site-footer p {
+			margin: 0;
+			letter-spacing: 0.16em;
+			text-align: center;
+			text-transform: uppercase;
+		}
+
+		@keyframes label-fade {
+			from { opacity: 0; }
+			to { opacity: 1; }
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			*,
+			*::before,
+			*::after {
+				scroll-behavior: auto !important;
+				animation-duration: 0.01ms !important;
+				animation-iteration-count: 1 !important;
+			}
+		}
+
+		@media (max-width: 640px) {
+			.page-shell {
+				width: min(calc(100% - 40px), var(--page-width));
+			}
+
+			.site-header {
+				min-height: 70px;
+			}
+
+			.site-nav {
+				gap: 16px;
+				font-size: 0.62rem;
+				letter-spacing: 0.1em;
+			}
+
+			.site-nav .button {
+				min-height: 38px;
+				padding-inline: 10px;
+				margin-top: -6px;
+				margin-bottom: -6px;
+			}
+
+			.hero-actions {
+				flex-wrap: wrap;
+			}
+
+			.services-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.service-card + .service-card {
+				border-top: 1px solid var(--line);
+				border-left: 0;
+			}
+
+			.service-index {
+				margin-bottom: 30px;
+			}
+
+			.price-row {
+				gap: 14px;
+			}
+
+			.project-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.project-preview {
+				min-height: 210px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header class="site-header page-shell">
+		<a class="wordmark" href="#top">FLOWSITE</a>
+		<nav class="site-nav" aria-label="Main navigation">
+			<a href="#work">Work</a>
+			<a href="#pricing">Pricing</a>
+			<a class="button button-outline" href="#contact">Enquire</a>
+		</nav>
+	</header>
+
+	<main id="top" class="page-shell">
+		<section class="hero" aria-labelledby="hero-title">
+			<p class="app-label">Web &amp; Systems studio</p>
+			<h1 id="hero-title">Built clean.<br>runs itself</h1>
+			<p class="hero-copy">We build thoughtful websites and systems that make your day-to-day run smoother.</p>
+			<div class="hero-actions">
+				<a class="button button-solid" href="#contact">Enquire</a>
+				<a class="button button-outline" href="#work">View work</a>
+			</div>
+		</section>
+
+		<section class="services-section" aria-labelledby="services-title">
+			<h2 class="services-title" id="services-title">Services</h2>
+			<div class="services-grid">
+				<article class="service-card">
+					<p class="service-index">01 — Sites</p>
+					<h3>Clear, considered websites.</h3>
+					<p>Fast, polished sites that make your offer easy to understand and act on.</p>
+				</article>
+				<article class="service-card">
+					<p class="service-index">02 — Systems</p>
+					<h3>Smoother ways to work.</h3>
+					<p>Practical automations that connect your tools and take repetitive work off your hands.</p>
+				</article>
+			</div>
+		</section>
+
+		<section id="work" class="work-section" aria-labelledby="work-title">
+			<div class="work-heading">
+				<p class="section-kicker">Selected work</p>
+				<h2 id="work-title">A few things we’ve built.</h2>
+			</div>
+			<div class="project-grid">
+				<a class="project-card" href="../Barbershop%20project/index.htm" target="_blank" rel="noopener noreferrer" aria-label="Open FADE Barbershop website">
+					<div class="project-preview project-preview--fade">
+						<small>Barbershop · Booking experience</small>
+						<strong>FA<span>D</span>E</strong>
+					</div>
+					<div class="project-copy">
+						<div class="project-meta"><span>01 / Website</span><span>Open project ↗</span></div>
+						<h3>FADE Barbershop</h3>
+						<p>A bold barbershop experience with service menus and appointment requests.</p>
+					</div>
+				</a>
+				<a class="project-card" href="../cleaning%20Specialist/index.html" target="_blank" rel="noopener noreferrer" aria-label="Open Cleaning and Hygiene Specialists website">
+					<div class="project-preview project-preview--cleaning">
+						<small>Cleaning · Hygiene · Durban</small>
+						<strong>Clean<span>.</span><br>Confident.</strong>
+					</div>
+					<div class="project-copy">
+						<div class="project-meta"><span>02 / Website</span><span>Open project ↗</span></div>
+						<h3>Cleaning &amp; Hygiene Specialists</h3>
+						<p>A clear, trust-focused site for professional cleaning and hygiene services.</p>
+					</div>
+				</a>
+				<a class="project-card" href="../Ilifa2%20-%20Copy/index.html" target="_blank" rel="noopener noreferrer" aria-label="Open Ilifa for Gqeberha website">
+					<div class="project-preview project-preview--ilifa">
+						<small>Ilifa for Gqeberha</small>
+						<strong>ILIFA</strong>
+					</div>
+					<div class="project-copy">
+						<div class="project-meta"><span>03 / E-commerce</span><span>Open project ↗</span></div>
+						<h3>Ilifa</h3>
+						<p>A heritage-inspired watch storefront featuring curated men’s and women’s collections.</p>
+					</div>
+				</a>
+			</div>
+		</section>
+
+		<section id="pricing" class="pricing-section" aria-labelledby="pricing-title">
+			<div class="pricing-heading">
+				<h2 id="pricing-title">Pricing</h2>
+				<p>Indicative project ranges; final quotes depend on scope.</p>
+			</div>
+			<div class="price-list">
+				<div class="price-row">
+					<div>
+						<h3>Sites</h3>
+						<p>Custom websites designed to present your work and bring in enquiries. Pricing depends on page count and site complexity.</p>
+					</div>
+					<span class="price-range">R500</span>
+				</div>
+				<div class="price-row">
+					<div>
+						<h3>Systems</h3>
+						<p>Workflow improvements and automations tailored to your day-to-day.</p>
+					</div>
+					<span class="price-range">R1000</span>
+				</div>
+				<div class="price-row">
+					<div>
+						<h3>Sites + Systems</h3>
+						<p>A complete web presence paired with practical business automation.</p>
+					</div>
+					<span class="price-range">R3500</span>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<section id="contact" class="contact" aria-labelledby="contact-title">
+		<div class="contact-inner page-shell">
+			<div>
+				<p class="section-kicker">Get in touch</p>
+				<h2 id="contact-title">Let’s make your next move simpler.</h2>
+				<p class="contact-copy">Tell me what you’re looking to build. I’ll get back to you to talk through the right approach.</p>
+			</div>
+			<a class="contact-link" href="mailto:vuyomabaleka07@gmail.com">Email me ↗</a>
+		</div>
+	</section>
+
+	<footer class="site-footer">
+		<div class="page-shell">
+			<p>Flowsite</p>
+		</div>
+	</footer>
+</body>
+</html>
