@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FADE | Barbershop</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--ink: #1c1a17;
+			--paper: #f2ece0;
+			--red: #a13d2b;
+			--gold: #b8923c;
+			--muted: #8a8377;
+			--line: rgba(242, 236, 224, .22);
+		}
+
+		* { box-sizing: border-box; }
+		html { scroll-behavior: smooth; }
+		body {
+			margin: 0;
+			background: var(--ink);
+			color: var(--paper);
+			font-family: Arial, sans-serif;
+			line-height: 1.5;
+		}
+		h1, h2, h3, .logo, nav a, button, .price, .duration, .eyebrow { font-family: Anton, Impact, sans-serif; font-weight: 400; letter-spacing: .04em; }
+		a { color: inherit; text-decoration: none; }
+		button, input, select { font: inherit; }
+		.site-header {
+			align-items: center; border-bottom: 1px solid var(--line); display: flex;
+			justify-content: space-between; margin: 0 auto; max-width: 1180px; padding: 20px 24px;
+		}
+		.logo { color: var(--paper); font-size: 29px; letter-spacing: .12em; }
+		.logo span { color: var(--gold); }
+		nav { display: flex; gap: 26px; }
+		nav a { color: var(--muted); font-size: 14px; transition: color .2s; }
+		nav a:hover, nav a.active { color: var(--paper); }
+		.menu-button { background: none; border: 1px solid var(--line); color: var(--paper); display: none; padding: 7px 10px; }
+		main { min-height: calc(100vh - 140px); }
+		.page { display: none; margin: 0 auto; max-width: 1180px; padding: 72px 24px 100px; }
+		.page.active { display: block; animation: arrive .35s ease-out; }
+		@keyframes arrive { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+		.hero { min-height: 650px; overflow: hidden; padding-top: 150px; position: relative; }
+		.watermark { color: transparent; font-family: Anton, Impact, sans-serif; font-size: clamp(180px, 30vw, 410px); left: -20px; line-height: .8; pointer-events: none; position: absolute; top: 95px; -webkit-text-stroke: 2px rgba(242,236,224,.13); z-index: 0; }
+		.hero-content { max-width: 620px; position: relative; z-index: 1; }
+		.eyebrow { color: var(--gold); font-size: 15px; text-transform: uppercase; }
+		h1 { font-size: clamp(64px, 10vw, 132px); line-height: .95; margin: 16px 0 20px; text-transform: uppercase; }
+		h1 em { color: var(--red); font-style: normal; }
+		.hero p { color: var(--muted); font-size: 19px; max-width: 500px; }
+		.button { background: var(--red); border: 0; color: var(--paper); cursor: pointer; display: inline-block; padding: 14px 22px; text-transform: uppercase; transition: background .2s, transform .2s; }
+		.button:hover { background: #bc4a34; transform: translateY(-2px); }
+		.section-heading { align-items: end; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; margin-bottom: 30px; padding-bottom: 15px; }
+		h2 { font-size: clamp(38px, 6vw, 68px); line-height: 1; margin: 0; text-transform: uppercase; }
+		.section-heading p { color: var(--gold); margin: 0; }
+		.service-grid, .menu-grid { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); }
+		.service-card, .menu-item { border: 1px solid var(--line); padding: 24px; }
+		.service-card { min-height: 180px; }
+		.number { color: var(--red); font-family: Anton; font-size: 28px; }
+		h3 { font-size: 25px; margin: 10px 0 7px; text-transform: uppercase; }
+		.service-card p, .menu-item p, .contact-list { color: var(--muted); }
+		.why { align-items: center; border-bottom: 1px solid var(--line); border-top: 1px solid var(--line); display: grid; gap: 50px; grid-template-columns: 1fr 1fr; margin-top: 110px; padding: 60px 0; }
+		.why p { color: var(--muted); font-size: 20px; margin: 0; }
+		.page-intro { color: var(--muted); font-size: 18px; max-width: 550px; }
+		.menu-section { margin-top: 54px; }
+		.menu-section h3 { color: var(--gold); font-size: 31px; margin-bottom: 14px; }
+		.menu-grid { grid-template-columns: repeat(2, 1fr); }
+		.menu-item { align-items: center; display: grid; grid-template-columns: 1fr auto; }
+		.menu-item h4 { font-family: Anton; font-size: 22px; font-weight: 400; margin: 0; text-transform: uppercase; }
+		.menu-item p { font-size: 14px; margin: 5px 0 0; }
+		.price { color: var(--paper); font-size: 29px; }
+		.duration { color: var(--gold); display: block; font-size: 12px; text-align: right; }
+		.booking-layout { display: grid; gap: 70px; grid-template-columns: 1fr 1fr; margin-top: 35px; }
+		.contact-layout { margin-top: 35px; max-width: 560px; }
+		form { border: 1px solid var(--line); padding: 28px; }
+		label { color: var(--muted); display: block; font-size: 13px; margin-bottom: 20px; text-transform: uppercase; }
+		input, select { background: transparent; border: 0; border-bottom: 1px solid var(--muted); color: var(--paper); display: block; margin-top: 7px; outline: none; padding: 10px 0; width: 100%; }
+		select option { background: var(--ink); }
+		form .button { margin-top: 5px; width: 100%; }
+		.notice { color: var(--gold); display: none; margin: 18px 0 0; }
+		.notice.show { display: block; }
+		.contact-list { list-style: none; margin: 0; padding: 0; }
+		.contact-list li { border-bottom: 1px solid var(--line); padding: 18px 0; }
+		.contact-list strong { color: var(--paper); display: block; font-family: Anton; font-size: 19px; font-weight: 400; letter-spacing: .04em; }
+		.map { align-items: center; background: repeating-linear-gradient(135deg, rgba(184,146,60,.08), rgba(184,146,60,.08) 2px, transparent 2px, transparent 15px), #26221e; border: 1px solid var(--line); color: var(--gold); display: flex; font-family: Anton; font-size: 32px; justify-content: center; min-height: 300px; text-align: center; }
+		footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; margin: 0 auto; max-width: 1180px; padding: 22px 24px; }
+		@media (max-width: 700px) {
+			.site-header { padding: 16px 20px; }
+			nav { background: var(--ink); border: 1px solid var(--line); display: none; flex-direction: column; gap: 16px; padding: 18px; position: absolute; right: 20px; top: 62px; z-index: 3; }
+			nav.open { display: flex; }
+			.menu-button { display: block; }
+			.page { padding: 48px 20px 70px; }
+			.hero { min-height: 590px; padding-top: 120px; }
+			.watermark { left: -12px; top: 100px; }
+			.section-heading { align-items: start; flex-direction: column; gap: 14px; }
+			.service-grid, .menu-grid, .why, .booking-layout, .contact-layout { grid-template-columns: 1fr; }
+			.why { gap: 25px; margin-top: 70px; padding: 40px 0; }
+			.booking-layout, .contact-layout { gap: 40px; }
+		}
+	</style>
+</head>
+<body>
+	<header class="site-header">
+		<a class="logo" href="#home">FA<span>D</span>E</a>
+		<button class="menu-button" aria-label="Open menu">MENU</button>
+		<nav>
+			<a href="#home">Home</a><a href="#services">Services</a><a href="#book">Book</a><a href="#contact">Contact</a>
+		</nav>
+	</header>
+
+	<main>
+		<section class="page" id="home">
+			<div class="hero">
+				<div class="watermark">FADE</div>
+				<div class="hero-content">
+					<div class="eyebrow">Classic cuts. Modern edge.</div>
+					<h1>Sharp looks.<br><em>Zero fuss.</em></h1>
+					<p>Good hair, good conversation, and a chair you will want to come back to. Welcome to your local barbershop.</p>
+					<a class="button" href="#book">Book a chair</a>
+				</div>
+			</div>
+			<div class="section-heading"><h2>Our picks</h2><p>Most asked for</p></div>
+			<div class="service-grid">
+				<article class="service-card"><span class="number">01</span><h3>The Fade</h3><p>Clean sides, blended perfectly. Finished with your choice of styling.</p></article>
+				<article class="service-card"><span class="number">02</span><h3>Beard Trim</h3><p>Shape, line-up and hot towel finish for a beard that means business.</p></article>
+				<article class="service-card"><span class="number">03</span><h3>The Full Service</h3><p>A haircut, beard trim and the full hot towel treatment. Take your time.</p></article>
+			</div>
+			<div class="why"><h2>Why us?</h2><p>We keep it simple: skilled barbers, quality products, and a relaxed chair. No rushed appointments, no weird extras. Just a cut that works.</p></div>
+		</section>
+
+		<section class="page" id="services">
+			<div class="section-heading"><h2>Services</h2><p>Choose your finish</p></div>
+			<p class="page-intro">Every service includes a consultation, a clean finish and a few minutes to make sure it is right.</p>
+			<div class="menu-section"><h3>Cuts</h3><div class="menu-grid">
+				<article class="menu-item"><div><h4>Classic Cut</h4><p>Scissor or clipper cut, styled to finish.</p></div><div><span class="price">R280</span><span class="duration">30 MIN</span></div></article>
+				<article class="menu-item"><div><h4>Skin Fade</h4><p>Detailed fade with a sharp line-up.</p></div><div><span class="price">R340</span><span class="duration">45 MIN</span></div></article>
+				<article class="menu-item"><div><h4>Buzz Cut</h4><p>One length, tidy edges, no fuss.</p></div><div><span class="price">R180</span><span class="duration">20 MIN</span></div></article>
+			</div></div>
+			<div class="menu-section"><h3>Beards &amp; Shave</h3><div class="menu-grid">
+				<article class="menu-item"><div><h4>Beard Trim</h4><p>Shape and line-up with clippers.</p></div><div><span class="price">R160</span><span class="duration">20 MIN</span></div></article>
+				<article class="menu-item"><div><h4>Hot Towel Shave</h4><p>Traditional close shave and cool towel.</p></div><div><span class="price">R260</span><span class="duration">30 MIN</span></div></article>
+			</div></div>
+			<div class="menu-section"><h3>Packages</h3><div class="menu-grid">
+				<article class="menu-item"><div><h4>The Full Service</h4><p>Classic cut, beard trim and hot towel.</p></div><div><span class="price">R520</span><span class="duration">60 MIN</span></div></article>
+				<article class="menu-item"><div><h4>Father &amp; Son</h4><p>Two classic cuts, one good afternoon.</p></div><div><span class="price">R420</span><span class="duration">60 MIN</span></div></article>
+			</div></div>
+		</section>
+
+		<section class="page" id="book">
+			<div class="section-heading"><h2>Book a chair</h2><p>We will see you soon</p></div>
+			<div class="booking-layout"><div><p class="page-intro">Pick a service and a time that works. This is a request form, so we will call to confirm your appointment.</p><p class="eyebrow">Tuesday - Saturday / 9:00 - 18:00</p></div>
+				<form id="booking-form"><label>Name<input name="name" required placeholder="Your name"></label><label>Service<select name="service" required><option value="">Choose a service</option><option>Classic Cut</option><option>Skin Fade</option><option>Beard Trim</option><option>Hot Towel Shave</option><option>The Full Service</option></select></label><label>Date<input name="date" type="date" required></label><label>Time<input name="time" type="time" required></label><label>Phone<input name="phone" type="tel" required placeholder="555-0123"></label><button class="button" type="submit">Request booking</button><p class="notice" id="booking-notice">Thanks, your request is ready. We will give you a call to confirm.</p></form>
+			</div>
+		</section>
+
+		<section class="page" id="contact">
+			<div class="section-heading"><h2>Contact</h2><p>Come say hey</p></div>
+			<div class="contact-layout"><ul class="contact-list"><li><strong>Address</strong>14 Mercer Street, Downtown</li><li><strong>Hours</strong>Tuesday - Friday: 9:00 - 18:00<br>Saturday: 9:00 - 16:00<br>Sunday &amp; Monday: Closed</li><li><strong>Phone</strong>555-019-FADE</li><li><strong>Email</strong>hello@fadebarber.test</li></ul></div>
+		</section>
+	</main>
+	<footer>FADE BARBERSHOP / GOOD CUTS SINCE 2024</footer>
+
+	<script>
+		const pages = document.querySelectorAll('.page');
+		const links = document.querySelectorAll('nav a');
+		const nav = document.querySelector('nav');
+		const menuButton = document.querySelector('.menu-button');
+		function showPage() {
+			const requested = location.hash.slice(1) || 'home';
+			const page = document.getElementById(requested) || document.getElementById('home');
+			pages.forEach((item) => item.classList.toggle('active', item === page));
+			links.forEach((link) => link.classList.toggle('active', link.hash === '#' + page.id));
+			nav.classList.remove('open');
+		}
+		window.addEventListener('hashchange', showPage);
+		menuButton.addEventListener('click', () => nav.classList.toggle('open'));
+		document.getElementById('booking-form').addEventListener('submit', (event) => {
+			event.preventDefault();
+			document.getElementById('booking-notice').classList.add('show');
+			event.target.reset();
+		});
+		showPage();
+	</script>
+</body>
+</html>
